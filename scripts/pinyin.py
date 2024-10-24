@@ -4,9 +4,9 @@ import sys
 col = Collection(sys.argv[1])
        
 for i, note in enumerate(col.get_note(id) for id in col.find_notes("")):
-    if "<" in note["Pinyin"] or "(" in note["Pinyin"] or "<" in note["Simplified"] or '"' in note["Simplified"] or note["Simplified"].startswith("A") or len(note["Simplified"]) > 9:
+    if "<" in note["Pinyin"] or "(" in note["Pinyin"] or '"' in note["Simplified"] or note["Simplified"].startswith("A") or "WRITING TOKEN" in note["Simplified"]:
         continue
-    fixed_simp = note["Simplified"].replace("\n", "").replace("&lt;br /&gt;B:", "\nB:")
+    fixed_simp = note["Simplified"].replace("\n", "").replace("</b>", "").replace("&lt;br /&gt;B:", "\nB:")
     generated = gen_pinyin(fixed_simp, output_heteronyms=", " in note["Pinyin"])
     if note["Pinyin"] != generated:
         print(f"{note["Simplified"]}, '{note["Pinyin"]}', '{generated}', {i}")
