@@ -1,9 +1,9 @@
 import jieba
 from pypinyin import pinyin
 
-def gen_pinyin(hanzi_string):
+def gen_pinyin(hanzi_string, output_heteronyms = True):
     output = ""
-    if len(hanzi_string) == 1:
+    if len(hanzi_string) == 1 and output_heteronyms:
         heteronyms = pinyin(hanzi_string, heteronym=True)
         
         output = ' '.join(', '.join(''.join(heteronym) for heteronym in inner) for inner in heteronyms)
