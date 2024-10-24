@@ -10,4 +10,4 @@ def gen_pinyin(hanzi_string, output_heteronyms = True):
     else:
         segmented = jieba.cut(hanzi_string)
         output = ' '.join(''.join((''.join(char) for char in pinyin(word))) for word in segmented)
-    return output.replace("！", "!").replace(" !", "!").replace("。", ".").replace(" .", ".").replace(" ？", "?").replace("，", ",").replace(" ,", ",").replace("、", "-").replace(" :", ":").replace("\n ", "\n")
+    return output.replace("！", "!").replace(" !", "!").replace("。", ".").replace(" .", ".").replace(" ？", "?").replace("，", ",").replace(" ,", ",").replace("、", "-").replace("：", ":").replace(" :", ":").replace("\n ", "\n")
