@@ -11,23 +11,23 @@
     self,
     nixpkgs,
     flake-utils,
-    hsk-3-0
+    hsk-3-0,
   }:
     flake-utils.lib.eachDefaultSystem (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in
         with pkgs; {
-          devShells.anki-editing = mkShell {
+          devShells.default = mkShell {
             buildInputs = [
               (python3.withPackages (ps: [
                 (ps.toPythonModule anki)
-                ps.ipython ps.pypinyin ps.jieba
+                ps.ipython
+                ps.pypinyin
+                ps.jieba
               ]))
             ];
-          };
-          packages = {
-            default = "${hsk-3-0}/README.md";
+            HSK_3_0_DIR = "${hsk-3-0}";
           };
         }
     );
