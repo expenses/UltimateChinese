@@ -27,6 +27,9 @@
                 ps.jieba
               ]))
               black
+              (writeShellScriptBin "jq-format" ''
+                cp UltimateChinese/deck.json tmp.json && cat tmp.json | jq > UltimateChinese/deck.json
+              '')
             ];
             HSK_3_0_DIR = "${hsk-3-0}";
           };
