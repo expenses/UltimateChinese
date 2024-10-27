@@ -26,6 +26,7 @@
                 ps.pypinyin
                 ps.jieba
               ]))
+              black
             ];
             HSK_3_0_DIR = "${hsk-3-0}";
           };
