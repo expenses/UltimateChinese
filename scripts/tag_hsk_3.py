@@ -12,4 +12,3 @@ for i, note in enumerate(col.get_note(id) for id in col.find_notes("")):
         print(tag)
         note.add_tag(tag)
     col.update_note(note)
-    

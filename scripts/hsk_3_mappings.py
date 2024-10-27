@@ -1,12 +1,19 @@
 # coding: utf-8
 import os
 
+
 def add_chars(mappings, value, *path):
-    for x in open(os.path.join(os.environ["HSK_3_0_DIR"], *path)).read().strip("\ufeff").split():
+    for x in (
+        open(os.path.join(os.environ["HSK_3_0_DIR"], *path))
+        .read()
+        .strip("\ufeff")
+        .split()
+    ):
         mappings[x] = value
 
+
 def gen_mappings():
-    mappings = {} 
+    mappings = {}
     add_chars(mappings, "7-9", "HSK List", "HSK 7-9.txt")
     add_chars(mappings, "7-9", "HSK Hanzi", "HSK 7-9.txt")
     add_chars(mappings, 6, "HSK List", "HSK 6.txt")
