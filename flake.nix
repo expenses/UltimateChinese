@@ -27,8 +27,9 @@
                 ps.jieba
               ]))
               black
-              (writeShellScriptBin "jq-format" ''
-                cp UltimateChinese/deck.json tmp.json && cat tmp.json | jq > UltimateChinese/deck.json
+              git-filter-repo
+              (writeShellScriptBin "sed-format" ''
+                sed 's/^ *//g' UltimateChinese/deck.json > tmp.json && mv tmp.json UltimateChinese/deck.json
               '')
             ];
             HSK_3_0_DIR = "${hsk-3-0}";
